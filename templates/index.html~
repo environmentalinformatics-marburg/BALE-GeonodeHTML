@@ -1,0 +1,198 @@
+{% extends "site_base.html" %}
+{% load i18n %}
+{% load staticfiles %}
+{% load base_tags %}
+
+{% block title %} {% trans "DFG Bale Mountains" %} - {{ block.super }} {% endblock %}
+
+{% block body_class %}home{% endblock %}
+
+{% block middle %}
+   {{ block.super }}
+  {% block hero %}
+  <section class="height-full">
+  {% endblock %}
+
+  {% block mainbody %}
+  <div class="container">
+    {% with facet_type='home' %}
+     {% facets as facets %}
+    <div class="row home-facets headline">
+      <h1>The Mountain Exile Hypothesis</h1>
+      <p>How humans benefited from and re-shaped African high altitude ecosystems during Quarternary climatic changes.<br>
+         An Ethio-German research project funded by the German Research Foundation DFG.</p>
+      <p>{% trans 'Any question?' %} <a href="mailto:bale@geo.uni-marburg.de">{% trans 'Contact us' %}</a></p>
+    </div>
+    <div class="row home-facets">
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <p><a href="{% url "layer_browse" %}"><i class="fa fa-square-o fa-5x rotate-45"></i></a></p>
+        <h2><a href="{% url "layer_browse" %}">{{ facets.layer|default:_("0") }} Laye{{ facets.layer|pluralize:"r,rs" }}</a></h2>
+        <p>Explore, upload and download collected geodatasets.</p> 
+        <p class="text-center"><a class="btn btn-default" href="{% url "layer_browse" %}" role="button">Explore layers</a></p>       
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <p><a href="{% url "maps_browse" %}"><i class="fa fa-map-marker fa-5x"></i></a></p>
+        <h2><a href="{% url "maps_browse" %}">{{ facets.map|default:_("0") }} GIS Ma{{ facets.layer|pluralize:"p,ps" }}</a></h2>
+        <p>Explore, create and save online maps of the data collection.</p>
+        <p><a class="btn btn-default" href="{% url "maps_browse" %}" role="button">Explore maps</a></p>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <p><a href="{% url "document_browse" %}"><i class="fa fa-file-text fa-5x"></i></a></p>
+        <h2><a href="{% url "document_browse" %}">{{ facets.document|default:_("0") }}  Documen{{ facets.layer|pluralize:"t,ts" }}</a></h2>
+        <p>Explore, upload and download other, non-geospatial data.</p>
+        <p><a class="btn btn-default" href="{% url "document_browse" %}" role="button">Explore documents;</a></p>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-6">
+        <p><a href="{% url "profile_browse" %}"><i class="fa fa-user fa-5x"></i></a></p>
+        <h2><a href="{% url "profile_browse" %}">{{ facets.user|default:_("0") }}  Membe{{ facets.layer|pluralize:"r,rs" }}</a></h2>
+        <p>Browse members of the research project and get in contact.</p>
+        <p><a class="btn btn-default" href="{% url "profile_browse" %}" role="button">"See members"</a></p>
+      </div>
+    </div>
+        <div class="row text-center">
+      <a href="#summary" class="btn btn-secondary btn-lg">More Information</a>
+    </div>
+  </div>
+    {% endwith %}
+
+  
+  {% verbatim %}
+  <div ng-app="featured">
+    <div ng-repeat="item in featured">
+      <!--{{ item.title }}-->
+    </div>
+  </div>
+  </section>
+  {% endverbatim %}
+  {% endblock %}
+
+  {% block info %}
+  <section class="container" id="summary" style="padding-top:75px">
+    <div class="row no-gutter">
+      <div class="col-md-4">
+        <img src="https://c1.staticflickr.com/9/8068/29712235325_eebbc38f3d.jpg" class="img-responsive" alt="Rock shelter">
+      </div>
+      <div class="col-md-8">
+        <h2>DFG Research Unit 2358</h2>
+        <p class="text-faded">
+        High altitude ecosystems are still widely perceived as natural and anthropogenic transformation is generally considered to be concentrated on lower elevations and late. However, recent studies challenge this view and for quaternary environmental science and prehistory, the question where humans retreated to during the driest intervals of the last 20 ka when lowlands may have become uninhabitable is still demanding.
+        <br>
+        As a consequence, we postulate not a late but early afro-alpine occupation expressed as the “Mountain Exile Hypothesis”. Hence, the research unit will focus on reconstructing the natural and the anthropogenic history of this afro-alpine environment in space and time and the identification and quantification of the natural and anthropogenic drivers and processes that shaped the ecology evolution of the research area.
+        <br>
+        The study region is located in the African model highland environments of southern Ethiopia (Sanetti Plateau, Bale Mountains National Park).        
+        </p>
+      </div>
+    </div>
+  </section>
+  {% endblock %}
+  
+  {% block sp %}
+  <hr class="light">
+  <div class="container">
+    <div class="row no-gutter">
+      <div class="text-center">      
+         <h2>Projects within the research consortium</h2>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-6">
+        <h4>P1 – Archeology and Archeozoology</h4>
+        <p>Alemsenged Beldado (Addis Ababa, Ethiopia) | Josefine Lesur (Paris, France) | <a href="http://137.248.191.208:12921/people/profile/anegash/?limit=100&offset=0">Agazi Negash (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/gossendorf/">Götz Ossendorf (Cologne, Germany)</a> | <a href="http://137.248.191.208:12921/people/profile/mtekelemariam/">Minassie Tekelemariam (Addis Ababa, Ethiopia) </a> | <a href="people/profile/rvogelsang/?limit=100&offset=0">Ralf Vogelsang (Cologne, Germany)</a></p>
+        <p>The question since when humans conquered high mountains and the age and evolution of the making of a tropical alpine human environment is in the focus of archeological surveys and excavations in rock shelters. In addition to the artifact analysis, Archeozoology and Archeobotany (macroremains analyzed by the Ethiopian counterpart Alemseged Beldados), Anthrosol investigation (P2), and Paleoecology (P4) are important parts of the diachronic examination of the interplay between humans and their environment during the late Quaternary landscape evolution. The use of the ’indicator species approach’ (Gaillard 2007) is based on vegetation records of the Environmental Baseline Assessment (P3).</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>P2 – Anthrosols of the Bale Mountains</h4>
+        <p><a href="http://137.248.191.208:12921/people/profile/tbromm/">Tobias Bromm (Halle, Germany)</a> | Bruno Glaser (Halle, Germany) | Fisseha Itanna (Addis Ababa, Ethiopia) | <a href="http://137.248.191.208:12921/people/profile/bmekonnen/">Betelhem Mekonnen Muluneh (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/wzech/">Wolfgang Zech (Bayreuth, Germany)</a></p>
+        <p>Anthrosols are the worldwide known soil-type of the Anthropocene and the human environment (Bork 2006). In the Bale Mountains, Anthrosols are mostly confined below rock cliffs providing shelter against the trade winds. Using numeric dating (14C, OSL), Anthrosols are suitable archives to reconstruct the chronology of human occupation. The Intensity of Human Occupation in space and time will be reconstructed by means of a paleopedological approach with special reference to pyrogenic carbon, lignin and cutin/suberin, using the BPCA method as a fire tracer (Glaser et al. 1998) and alkaline CuO oxidation of lignin to differentiate grasses from woody plants and cutin/suberin analysis (Otto and Simpson 2007).</p>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>P3 – Environmental Baseline Assessment</h4>
+        <p><a href="http://137.248.191.208:12921/people/profile/sdemissew/">Sebsebe Demissew (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/mfekadu/">Mekbib Fekadu (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/gmiehe/">Georg Miehe (Marburg, Gemrany)</a> | <a href="http://137.248.191.208:12921/people/profile/tnauss/">Thomas Nauss (Marburg, Germany)</a> | <a href="http://137.248.191.208:12921/people/profile/zwoldu/">Zerihun Woldu (Addis Ababa, Ethiopia)</a></p>
+        <p>The environmental baseline assessment is central for the calibration of proxies which in turn is central for the reliability of proxies in paleoenvironmental research. For this reason an assessment of vegetation patterns is performed as a tool to understand climatic gradients, biotic and cultural disturbance ecology and to determine indicator values of pollen and spores. Furthermore, an assessment of distribution patterns and dynamics of the main ecosystem constituents, the Erica woodlands, the Giant Molerat’s landscape engineering and the present-day land-use patterns of herding and fire-management of rangelands are another pre-requisite for the understanding of paleo-proxies. This assessment comprises vegetation records and remote sensing.</p>
+		</div>
+	 </div>
+
+    <div class="row no-gutter">
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>P4 – Paleoecology: Pollen analysis and ecological history of the Bale Mountains</h4>
+        <p><a href="http://137.248.191.208:12921/people/profile/hlamb/">Henry Lamb (Aberystwyth, UK)</a> | Graciela Gil Romera (Zaragoza, Espana) | Asfaw Wossem (Addis Ababa, Ethiopia)</p>
+        <p>Pollen, plant macrofossil and charcoal analysis is central to reconstructing both the Human History as well as the Landscape History. In order to be able to use pollen analysis as a tool to disentangle these signals, close cooperation with the vegetation monitoring (P3: Environmental Baseline Assessment) and the identification of ecological indicators is mandatory. The initial approach will be to produce high resolution pollen analysis for the past 1000 years; at least eight good archives (lakes, ponds and peatlands in glacial tongue basins) will be made available through the cores. On the basis of these high resolution profiles, archives spanning the older past (to at least 16,000 years) will be analyzed using pollen, spores, macrofossils, and charcoal.</p>
+		</div>
+		
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>P5 - Paleoclimatology</h4>
+        <p><a href="http://137.248.191.208:12921/people/profile/lbittner/">Lucas Bittner  (Halle, Germany)</a> | Merhawi Gebre Egziabher (Addis Ababa, Ethiopia) | <a href="http://137.248.191.208:12921/people/profile/blemma/">Bruk Lemma Debebe (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/skebede/">Seifu Kebede (Addis Ababa, Ethiopia)</a> | Michael Zech (Halle, Germany)</p>
+        <p>Reconstruction of the paleoclimatology of the Bale Mountains will be performed by applying biomarker, stable oxygen (180/160)- and hydrogen (2H/1H) isotope-analyses to plants, soils, and sediments of paleoclimate archives of the cores and rainfall along altitudinal transects. Detecting the isotope signature of the present rainfall of different sources is essential for a robust interpretation of the sedimentary δ180 and δ2H records in terms of changing atmospheric circulation patterns of the past. The proxy-based reconstruction of the paleoclimate will allow a direct comparison with the results of the projects P2 (Anthrosols and Intensity of Human Occupation), P4 (Paleoecology) and P6 (Glacial Chronology). </p>
+		</div>
+
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>P6 – Glacial Chronology</h4>
+        <p>Alexander Gross (Bern, Switzerland) | Heinz Veit (Bern, Switzerland)</p>
+        <p>The glacial history will be assessed by moraine mapping and dating of moraines by means of organic samples from turf basins (youngest stages) and 36Chlor cosmogenic nuclides (for older big boulder moraines and boulder streams (see cover photo). The determination of extension and age of moraines is not only important for the reconstruction of the paleo circulation patterns, but is pivotal to distinguish between settlements/rockshelters of warm/wet climates of Interglacials/the Holocene or those of cold/dry climates like the LGM, when glacial meltwater streams are supposed to be a crucial resource for wildlife and hunters.
+        </p>
+		</div>
+	 </div>
+
+    <div class="row no-gutter">
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>P7 – Ground Beetles as human-independent landscape proxy</h4>
+        <p>Habte Debella (Addis Ababa, Ethiopia) | Lars Opgenoorth (Marburg, Germany) | Joachim Schmidt (Rostock, Germany) | Kassahun Tesfaye (Addis Ababa, Ethiopia)</p>
+        <p>Spatially explicit reconstruction of refugia and LGM temperature depressions in the Bale Mountains will be done on the basis of ground beetle phylogeography and phylogenetics. Ground beetles are a proxy that is independent of the human signal as they live close to the ground and are not hunted. They occur in sufficient species abundances and with strict ecological envelopes that they will allow a reconstruction of biome specific refugia reconstruction, as well as LGM temperature reconstruction. 
+        </p>
+		</div>
+		
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>C1 – Coordination</h4>
+        <p><a href="http://137.248.191.208:12921/people/profile/sdemissew/">Sebsebe Demissew (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/mfekadu/">Mekbib Fekadu (Addis Ababa, Ethiopia)</a> | <a href="http://137.248.191.208:12921/people/profile/gmiehe/">Georg Miehe (Marburg, Gemrany)</a> | <a href="http://137.248.191.208:12921/people/profile/tnauss/">Thomas Nauss (Marburg, Germany)</a> | Lars Opgenoorth  (Marburg, Germany) | Zerihun Woldu (Addis Ababa, Ethiopia)</p>
+        <p>The central coordination encompasses the management of common funds of the research group, establishment and maintenance of network-based communications, project meetings, permits, sample export and other administrative services. 
+        </p>
+		</div>
+		
+      <div class="col-lg-4 col-md-4 col-sm-6 nopadding">
+        <h4>C2 – Central Scientific Services</h4>
+        <p><a href="http://137.248.191.208:12921/people/profile/fdetsch/">Florian Detsch (Marburg, Germany)</a> | Binyam Tesfaw Hailu (Addis Ababa, Ethiopia) | <a href="http://137.248.191.208:12921/people/profile/tnauss/">Thomas Nauss (Marburg, Germany)</a> | <a href="http://137.248.191.208:12921/people/profile/ftekle/">Fikremariam Teshome</a> </p>
+        <p>The major tasks cover (i) the management of the overall data storage and exchange which will also ensure a sustainable usability of the collected data sets after the project and the (ii) promotion of both advanced within sub-project analysis and across-sub-project synthesis through the compilation of higher-level comprehensive data sets and the development and implementation of analysis workflows. For data storage, exchange and synthesis, this platform is implemented. Advanced analysis and synthesis workflows will be implemented to ensure efficient data curation and the compilation of additional baseline and higher-level data sets demanded but not provided by any of the projects or specifically required for overall synthesis activities.</p>
+		</div>
+	 </div>
+  </div>
+
+    <hr class="light">
+
+  <div class="container">
+    <div class="row no-gutter">
+      <div class="col-md-4">
+        <a data-flickr-embed="true" data-header="true" data-footer="false"  href="https://www.flickr.com/photos/dfg-bale/albums/72157671486562943" title="Impressions"><img src="https://c6.staticflickr.com/9/8233/29088018493_7a9cb40512_n.jpg" width="320" height="240" alt="Impressions"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>      
+      </div>
+      <div class="col-md-8">
+        <h2>Impressions from the project's flickr webspace</h2>
+        <p class="text-faded">
+        Some impressions from our vast photo collection hosted at <a href="https://www.flickr.com/photos/dfg-bale/">flickr</a>. Feel free to explore our photos and include one or two in one of our presentations but remember to reference us. 
+        <br>
+        If you intend to actually work with our photo collection within your research, education or profit-oriented project, please contact us in advance. 
+        </p>
+      </div>
+    </div>
+  </div>
+  {% endblock %}
+
+  
+{% endblock %}
+
+{% block extra_script %}
+{% if DEBUG_STATIC %}
+<script src="{{ STATIC_URL }}lib/js/angular.js"></script>
+{% endif %}
+  <script type="text/javascript">
+    FEATURED_URL = '{% url 'api_dispatch_list' api_name='api' resource_name='featured' %}'
+    'use strict';
+    (function(){  
+      var module = angular.module('featured', []);
+      module.run(function($http, $rootScope){
+        $http.get(FEATURED_URL).success(function(data){
+          $rootScope.featured = data.objects;
+        });
+      });
+    })(); 
+  </script>
+
+{% endblock extra_script %}
