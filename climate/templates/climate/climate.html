@@ -1,0 +1,37 @@
+{% extends "site_base.html" %}
+
+{% block title %} climate {% endblock %}
+
+{% block body_outer %}
+
+{% comment %}
+
+<link href="{{ STATIC_URL }}climate/ol.css" rel="stylesheet" />
+<script src="{{ STATIC_URL }}climate/ol.js"></script>
+
+<script src="{{ STATIC_URL }}jquery-ui-1.12.0/external/jquery/jquery.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}jquery-ui-1.12.0/jquery-ui.css" type="text/css">
+<script src="{{ STATIC_URL }}jquery-ui-1.12.0/jquery-ui.js"></script>
+
+<script src="{{ STATIC_URL }}climate/climate.js"></script>
+
+<h1>Climate station browser</h1>
+
+<div id="map" class="map"></div>
+
+<i>Select plots by specifying a rectangle on the map:</i> press and hold <b>ctrl-key</b> together with <b>left mouse button</b> and move 
+<br>
+<a href="transfer/content/index.html">go to integrated time series web interface</a>
+
+{% endcomment %}
+
+<h1>Climate station browser</h1>
+
+<iframe src="transfer/content/map2/map2.html" width="800" height="600">
+  <p>ERROR: Your browser does not support iframes.</p>
+</iframe>
+
+<br>
+<a href="transfer/content/index.html" target="_blank">Open time series web interface</a>
+
+{% endblock body_outer %}

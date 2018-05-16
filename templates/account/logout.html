@@ -1,8 +1,9 @@
-{% extends "account/base.html" %}
+{% extends "site_base.html" %}
 
+{% load url from future %}
 {% load i18n %}
 
-{% block title %}{% trans "Log out" %}{% endblock %}
+{% block head_title %}{% trans "Log out" %}{% endblock %}
 
 {% block body %}
   <div class="row">

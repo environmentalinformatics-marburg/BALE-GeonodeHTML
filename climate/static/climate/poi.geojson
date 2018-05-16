@@ -1,0 +1,47 @@
+{ "type": "FeatureCollection",
+"features": [
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.3564020806,48.4895088831]},
+"properties": {"name": "AEG20", "description": "plot at Explotatories", "href": "transfer/content/visual_plotstation_raw.html"}
+},
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.3572193006,48.4422038842]},
+"properties": {"name": "AEG21", "description": "plot at Explotatories", "href": "http://137.248.191.249:8080/0123456789abcdef/content/visual_plotstation_raw.html"}
+},
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.5134230403,48.4043813138]},
+"properties": {"name": "AEG22", "description": "plot at Explotatories", "href": "http://137.248.191.249:8080/0123456789abcdef/content/visual_plotstation_raw.html"}
+},
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.512354055,48.4189546956]},
+"properties": {"name": "AEG23", "description": "plot at Explotatories", "href": "http://137.248.191.249:8080/0123456789abcdef/content/visual_plotstation_raw.html"}
+},
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.4934922481,48.3964648774]},
+"properties": {"name": "AEG24", "description": "plot at Explotatories", "href": "http://137.248.191.249:8080/0123456789abcdef/content/visual_plotstation_raw.html"}
+},
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.2595965836,48.3954780011]},
+"properties": {"name": "AEG25", "description": "plot at Explotatories", "href": "http://137.248.191.249:8080/0123456789abcdef/content/visual_plotstation_raw.html"}
+},
+
+{
+"type": "Feature",
+"geometry": {"type": "Point", "coordinates": [9.4038818301,48.3951061598]},
+"properties": {"name": "AEG26", "description": "plot at Explotatories", "href": "http://137.248.191.249:8080/0123456789abcdef/content/visual_plotstation_raw.html"}
+}
+
+]
+}

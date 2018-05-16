@@ -1,0 +1,79 @@
+-----------------------insert climate app into geonode--------
+
+all paths assume a Windows installation (should work on Linux too) of geonode in c:/GeoNode-2.4.x
+
+*** add TubeDB reverseproxy and entry page ***
+copy content of "climate" to directory: c:/GeoNode-2.4.x/geonode-2.4.x/climate
+
+
+*** register climate app ***
+c:/GeoNode-2.4.x/geonode-2.4.x/geonode/settings.py
+add entry at "INSTALLED_APPS":
+	'climate',
+
+	
+*** register climate app urls ***
+file: c:/GeoNode-2.4.x/geonode-2.4.x/geonode/urls.py
+add entry at "urlpatterns":
+	(r'^climate/', include('climate.urls')),
+
+	
+*** add "Climate"-Button on geonode-pages header ***	
+file: c:/GeoNode-2.4.x/geonode-2.4.x/geonode/templates/base.html
+add entry at "<div id="navbar" class="navbar-collapse collapse">":
+	<li id="nav_climate">
+        <a href="{% url "climate_index" %}">{% trans "Climate" %}</a>
+    </li>
+
+	
+*** connection to TubeDB (default settings for "249er" are included)***
+file: c:/GeoNode-2.4.x/geonode-2.4.x/climate/views.py
+contains reverse-proxy and connection settings.
+
+line "transfer_base"
+base url of TubeDB	
+
+at line "digest_url"
+base url of TubeDB server without path
+
+at line "digest_broker_account"
+TubeDB user
+
+at line "digest_password"
+TubeDB password
+
+
+*** page that is shown at click on "Climate"-Button ***
+file (django html-template): c:/GeoNode-2.4.x/geonode-2.4.x/climate/templates/climate/climate.html
+
+location of static files, that are referenced by "climate.html"-template:
+c:/GeoNode-2.4.x/geonode-2.4.x/climate/static
+
+	
+--------------geonode dev server instructions-------------------------------------------	
+
+geonode server url:
+http://localhost
+
+geonode dev server url:
+http://localhost:8000
+
+geonode user:
+admin
+
+geonode password:
+admin
+
+proxied climatedatebase entry point url (TubeDB main page):
+http://localhost/climate/transfer/content/index.html
+http://localhost:8000/climate/transfer/content/index.html
+
+
+working directory:
+c:/GeoNode-2.4.x/geonode-2.4.x
+
+setup python, needs to be called at each terminal session start again:
+virtualenv_local_setup.bat
+
+run dev server at http://localhost:8000
+python manage.py runserver
